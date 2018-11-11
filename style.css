@@ -1,0 +1,65 @@
+/*   
+Theme Name: bootstrap-modern-business-g
+Theme URI: tecnologias360.com/temas/bootstrap-modern-business-g
+Description: Tema optimizado para SEO usando BootStrap
+Author: Gerardo González
+Author URI: https://www.facebook.com/gergab00
+Version: 1.0.1
+Licencia: GNU GENERAL PUBLIC LICENSE 2018
+URI de licencia: https://www.gnu.org/licenses/lgpl-3.0-standalone.html
+Etiquetas: Bootstrap 4, SEO, Perzonalizable, WooCommerce, Afiliados Amazon
+*/
+body {padding-top: 54px;}
+
+@media (min-width: 992px) {body {padding-top: 56px;}}
+.carousel-item{
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+/*--------Colors-----------*/
+.bg-royalblue{background-color: #4169E1;}
+.bg-lime{background-color: #00FF00;}
+.bg-mediumvioletred{background-color: #663399;}
+.bg-darkkhaki{background-color: #BDB76B;}
+.bg-orangered{background-color: #FF4500;}
+.bg-rebeccapurple{background-color: #C71585;}
+.bg-darkred{background-color: #8B0000;}
+
+.br-darkred{border-color: #8B0000;}
+
+.px-2{border: 2px solid;}
+.px-4{border: 4px solid;}
+
+.business-header{ 
+	height: 65vh;
+	background-size: cover;
+	background-position: cover;
+}
+
+.woocommerce span.onsale {
+    min-height: 3.236em;
+    min-width: 3.236em;
+    padding: .202em;
+    font-size: 1em;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    line-height: 3.236;
+    top: -.5em;
+    left: -.5em;
+    margin: 0;
+    border-radius: 100%;
+    background-color: #FF0000;
+    color: #fff;
+    font-size: .857em;
+    z-index: 9
+}
