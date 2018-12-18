@@ -5,7 +5,7 @@ Carousel
 $catCarousel = get_theme_mod('carrousel_header');
 ?>
 <header>
-<?php $loopCarousel = new WP_Query( array( 'cat' => $catCarousel ) ); ?>
+<?php $loopCarousel = new WP_Query( array( 'cat' => $catCarousel, 'posts_per_page' => 3, ) ); ?>
 <?php if ($loopCarousel->have_posts()) { ?>
 <div class="carousel slide carousel-fade" data-ride="carousel" id="carouselHeader">
 <ol class="carousel-indicators">

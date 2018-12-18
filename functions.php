@@ -2,21 +2,24 @@
 //REQUIERES
 require_once get_template_directory().'/wp-bootstrap-navwalker-master/class-wp-bootstrap-navwalker.php';// Register Custom Navigation Walker
 require_once get_template_directory().'/wp_bootstrap_starter_comment/class-wp_bootstrap_starter_comment.php';
+require_once get_template_directory().'/inc/customizer.php';
+require_once get_template_directory().'/inc/shortcodes.php';
+require_once get_template_directory().'/inc/customizer-admin.php';
 if (check_plugin_state('woocommerce')) {
     require_once get_template_directory().'/woocommerce/woo-functions.php';
 }
-require_once get_template_directory().'/inc/customizer.php';
-require_once get_template_directory().'/inc/shortcodes.php';
 //FUNCIONES 
 function agregado_cssjs() {//AGREGADO JS Y CSS
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array(), '4.1.3', 'all' );
-    wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css', array(), '5.3.1', 'all' );
+    //wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css', array(), '5.3.1', 'all' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', array(), '3.1.1', true );
-    wp_enqueue_script( 'jquery' );
+    wp_register_script( 'jquerySlim', 'https://code.jquery.com/jquery-3.3.1.slim.min.js', array(), '3.1.1', true );
+    wp_enqueue_script( 'jquerySlim' );
     wp_register_script( 'bootstrapbundlejs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js', array(), '4.1.3', true );
     wp_enqueue_script( 'bootstrapbundlejs');
+    wp_register_script( 'fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/js/all.js', array(), '5.3.1', 'all', true );
+    wp_enqueue_script( 'fontawesome');
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -109,8 +112,8 @@ function the_related_content($idPost){
 
     if ( $loop->have_posts() ){
         $relatedContent .= '<div class="row">';
-        $google_adsense_300_250 = get_theme_mod('google_adsense_300_250');
-            if (!empty($google_adsense_300_250)) {
+        $google_adsense_300_250 = get_option('adsense_300_250');
+        if (get_option('analytics_on')=="on" && !empty($google_adsense_300_250)){
             $relatedContent .= '<div class="col-md-6"><div class="card">';
             $relatedContent .= '<div class="card-body">';
             $relatedContent .= '<div id="google_adsense" class="row d-flex justify-content-center">';
@@ -142,8 +145,8 @@ function the_related_content($idPost){
 
         if ( $loop2->have_posts() ){
             $relatedContent .= '<div class="row">';
-            $google_adsense_300_250 = get_theme_mod('google_adsense_300_250');
-            if (!empty($google_adsense_300_250)) {
+            $google_adsense_300_250 = get_option('adsense_300_250');
+            if (get_option('analytics_on')=="on" && !empty($google_adsense_300_250)){
             $relatedContent .= '<div class="col-md-6"><div class="card">';
             $relatedContent .= '<div class="card-body">';
             $relatedContent .= '<div id="google_adsense" class="row d-flex justify-content-center">';
@@ -172,7 +175,7 @@ function the_related_content($idPost){
     wp_reset_query();
 };
 //----------------------------------------
-function extractoPersonalizado($text = '', $tamaño = -1){
+function extractoPersonalizado($text = '', $tamaÃ±o = -1){
     $str = str_split($text);
     $max = count($str);
     $var = true;
@@ -185,7 +188,7 @@ function extractoPersonalizado($text = '', $tamaño = -1){
         }
         if($var){$extracto .= $str[$i];}
     }
-    $extractoPersonalizado = substr($extracto, 0, $tamaño);
+    $extractoPersonalizado = substr($extracto, 0, $tamaÃ±o);
     $extractoPersonalizado .= '...';
     return $extractoPersonalizado;
 }
@@ -228,7 +231,7 @@ function registroSidebar(){
     register_sidebar(array(
         'name'          =>      'SideBar Blog',
         'id'            =>      'sidebar-1',
-        'description'   =>      'Área de widgets que aparece en el Blog',
+        'description'   =>      'Area de widgets que aparece en el Blog',
         'before_widget' =>      '<div id="sidebar-blog" class="card my-4">',
         'after_widget'  =>      '</div></div>',
         'before_title'  =>      '<h5 class="card-header">',
@@ -237,7 +240,7 @@ function registroSidebar(){
     register_sidebar(array(
         'name'          =>      'SideBar Footer',
         'id'            =>      'sidebar-2',
-        'description'   =>      'Área de widgets que aparece en el Footer',
+        'description'   =>      'Area de widgets que aparece en el Footer',
         'before_widget' =>      '<div class="card"><div class="card-body">',
         'after_widget'  =>      '</p></div></div>',
         'before_title'  =>      '<h5 class="card-title">',

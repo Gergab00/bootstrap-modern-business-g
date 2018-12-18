@@ -26,20 +26,9 @@ include(get_home_template());
 </div>
 <div class="d-flex border border-muted my-3"></div><!-- /hr -->
 <!-- Portfolio Section -->
-<div class="row d-flex justify-content-center m-2">
-<h2 class="display-2"><a href="<?php echo get_option('siteurl'); ?>/?page_id=<?php echo get_option('page_for_posts'); ?>">Blog</a></h2>
-</div>
+<?php get_template_part( 'sections/section', 'blog' ); ?><!--section-blog-->
 <?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
-<div class="row"><!--section-blog-->
-<?php get_template_part( 'sections/section', 'blog' ); ?>
-</div>
-<!-- /.row -->
-<?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
-<!-- Shop Section -->
-<div class="row"><!--section-blog-->
-<?php get_template_part( 'sections/section', 'shop' ); ?>
-</div>
-<!-- /.Shop Section -->
+<?php get_template_part( 'sections/section', 'shop' ); ?><!-- Shop Section -->
 <?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
 <!-- Features Section -->
 <?php

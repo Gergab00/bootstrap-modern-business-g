@@ -1,23 +1,15 @@
 <?php 
-function perzonalizarWooCommerce($wp_customize){
-	//Section Amazon
-	$wp_customize->add_section( 'amazon_section' , array(
-		'title' 		=> 'Afilaidos de Amazon',
-		'description' 	=> 'Agrega tu ID de tienda',
-		'panel'	=> 'woocommerce',
-		'priority' 		=> 21,
-		'capability' 	=> 'edit_theme_options',
-	));
-	$wp_customize->add_setting( 'amazon_id', array(
-		'type' 			=> 'theme_mod',
-		'capability' 	=> 'edit_theme_options',
-	));
-	$wp_customize->add_control('amazon_id', array(
-		'label' 		=> 'Amazon ID:',
-		'section' 		=> 'amazon_section',
-		'priority' 		=> 1,
-		'type'			=> 'text',
-	));
+function perzonalizarWooCommerce(){
+	add_submenu_page(
+		'theme-config',
+		'Opciones de Amazon',
+		'Opciones de Amazon',
+		'edit_theme_options',
+		'opciones-amazon',
+		create_function( null, 'displayPages( "opciones-amazon" );' )
+	);
+	register_setting( 'amazonSettings','amazon_on');
+	register_setting( 'amazonSettings','amazon_id');
 }
-add_action('customize_register','perzonalizarWooCommerce');
+add_action('admin_menu','perzonalizarWooCommerce');
 ?>

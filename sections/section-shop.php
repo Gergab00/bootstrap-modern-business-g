@@ -4,26 +4,23 @@ Blog Section
 */
 ?>
 <?php if (check_plugin_state('woocommerce')) { ?>
-<section class="col-lg m-2 woocommerce">
-<div class="row">
-<div class="col-lg-12">
+<div class="row d-flex justify-content-center m-2">
 <?php
 $idPage = wc_get_page_id( 'shop' );
 $enlace = get_permalink( $idPage);
 ?>
-<h2 class="my-4"><a href="<?php echo $enlace; ?>">
-	<?php if (is_checkout()) {
-		echo "Conoce otros articulos de nuestra Tienda";
-	} else {
-		echo "Tienda";
-	}
-	 ?>
+<h2 class="display-2"><a href="<?php echo $enlace; ?>">
+<?php if (is_checkout()) {
+echo "Conoce otros articulos de nuestra Tienda";
+} else {
+echo "Tienda";
+}
+?>
 </a></h2>
 </div>
-</div>
-<div class="row">
+<?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
+<section class="row m-2 woocommerce">
 <?php
-
 $shoopLoop = new WP_Query( 
 array(  'posts_per_page' => 6,
 'post_type' => 'product',
@@ -38,14 +35,15 @@ woocommerce_product_loop_start();
 * @hooked WC_Structured_Data::generate_product_data() - 10
 */
 do_action( 'woocommerce_shop_loop' );
-
 wc_get_template_part( 'content', 'product' );
 woocommerce_product_loop_end();
 }
 }
 ?>
-</div>
 </section>
+<div class="row d-flex justify-content-center m-2">
+<a class="btn btn-outline-primary btn-lg" href="<?php echo $enlace; ?>">Visita nuestra tienda</a>
+</div>
 <?php } else { ?>
 <div class="d-flex border border-muted my-3"></div><!-- /hr -->
 <?php }

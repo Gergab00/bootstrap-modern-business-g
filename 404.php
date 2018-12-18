@@ -13,32 +13,39 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     3.5.0
+ * @version     2.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-	do_action('woocommerce_cart_emptied');
-	get_header( 'shop' );
+
+get_header( 'shop' );
 ?>
 
 <header class="container-fluid d-flex justify-content-center align-items-center business-header" style="background:#000000;">
-	<h1 class="display-1 text-white text-center">¡GRACIAS POR TU COMPRA!</h1>
+	<h1 class="display-1 text-white text-center">¡ERROR 404!</h1>
+  <h3 class="text-white">Lo sentimos no pudimos encontrar la pagina solicitada.</h3>
+  
 </header>
 
 <div class="container">
 	<div class="row d-flex justify-content-center m-2">
+    <h5 class="display-4">Te recomedamos lo siguiente.</h5>
                 <h3 class="display-3">
                     <a href="<?php echo get_option('siteurl'); ?>/?page_id=<?php echo get_option('page_for_posts'); ?>">
                         Visita los articulos de nuestro Blog
                     </a>
                 </h3>
             </div>
-<?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
-<?php get_template_part( 'sections/section', 'blog' ); ?>
-<?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
-<?php get_template_part( 'sections/section', 'shop' ); ?>
+  <?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
+	<div class="row">
+		<?php get_template_part( 'sections/section', 'blog' ); ?>
+	</div>
+	<?php get_template_part( 'sections/section', 'adsense' ); ?><!-- ADSENSE SECTION -->
+	<div class="row">
+		<?php get_template_part( 'sections/section', 'shop' ); ?>
+	</div>
 </div><!-- /.Container -->
 <?php
 get_footer('shop');

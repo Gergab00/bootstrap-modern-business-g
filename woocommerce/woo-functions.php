@@ -1,5 +1,4 @@
 <?php
-require_once get_template_directory().'/woocommerce/woo-customizer.php';
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
 	add_theme_support( 'woocommerce' );
@@ -81,4 +80,13 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+//Remove Styles
+function removerCSSJSWoo(){
+	wp_dequeue_script( 'jqueryui' );
+	wp_dequeue_script( 'jquery-blockui' );
+	wp_dequeue_script( 'jquery-placeholder' );
+	wp_dequeue_script( 'jquery-payment' );
+}
+add_action( 'wp_enqueue_scripts', 'removerCSSJSWoo', 99 );
+require_once get_template_directory().'/woocommerce/woo-customizer.php';
 ?>

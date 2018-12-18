@@ -8,7 +8,7 @@ $tarjetas_servicios_3 = get_theme_mod('tarjetas_servicios_3');
 ?>
 <?php $servicePage1 = new WP_Query( 
 array(  'posts_per_page' => 3,
-'post_type' => 'page',
+	'post_type' => array( 'post', 'page'),
 'post__in' => array(
     $tarjetas_servicios_1,
     $tarjetas_servicios_2,

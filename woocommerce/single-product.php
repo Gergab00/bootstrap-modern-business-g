@@ -35,20 +35,18 @@ get_header( 'shop' ); ?>
 	<?php 
 		woocommerce_breadcrumb();
 	?> 
-	<div class="row">
-
-		
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-		<?php endwhile; // end of the loop. ?>
-		<?php endif; ?>
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		do_action( 'woocommerce_sidebar' );
-	?>
+<div class="row">
+<?php wc_get_template_part( 'content', 'single-product' ); ?>
+<?php endwhile; // end of the loop. ?>
+<?php endif; ?>
+<?php
+/**
+* woocommerce_sidebar hook.
+*
+* @hooked woocommerce_get_sidebar - 10
+*/
+do_action( 'woocommerce_sidebar' );
+?>
 	<?php
 		/**
 		 * woocommerce_after_main_content hook.
